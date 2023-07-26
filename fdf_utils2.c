@@ -68,7 +68,7 @@ char	*retrieve_buf(const char *arg1)
 		write(2, "error: invalid map\n", 20);
 		exit(0);
 	}
-	buf[rd] = '\0';
+	buf[rd+1] = '\0';
 	free(path);
 	close(fd);
 	return (buf);

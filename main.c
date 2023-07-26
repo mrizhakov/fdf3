@@ -132,31 +132,81 @@ void ft_put_line_any(int32_t x, int32_t y, int32_t x_end, int32_t y_end, long co
 
 int32_t conv_x(int32_t x, int32_t y, int32_t z)
 {
-    double angle = 30.0;
-    double cos_value = cos(angle);
+//    double angle = 30.0;
+//    double cos_value = cos(angle);
     double dx = (double)x;
     double dy = (double)y;
     double dz = (double)z;
+
+//	float theta = 45.0f * (3.14159265358979323846f / 180.0f);
+//	float phi = 35.264f * (3.14159265358979323846f / 180.0f);
+
+	// Calculate the isometric projection
 
 //    return (dx + cos_value + dz);
 //    return ((int32_t)((dx - dz)/sqrt(2)));
 //    return ((int32_t )((dx - dz) * cos(M_PI / 6.0)));
-    return ((dx * cos(M_PI /6.0) + dy * cos(M_PI/6.0 + 2) + dz * cos(M_PI/6.0 - 2)));
+//    return ((dx * cos(M_PI /6.0) + dy * cos(M_PI/6.0 + 2) + dz * cos(M_PI/6.0 - 2)));
+//	return ((dx - dy) * cos(M_PI / 6.0));
+//	float theta = 45.0f * (3.14159265358979323846f / 180.0f);
+//	float phi = 35.264f * (3.14159265358979323846f / 180.0f);
+
+	// Calculate the isometric projection
+
+
+	// Rotate by 45 degrees (additional rotation step)
+	float theta = 45.0f * (3.14159265358979323846f / 180.0f);
+	float phi = 35.264f * (3.14159265358979323846f / 180.0f);
+
+	// Calculate the isometric projection
+	 float x_iso = x * cos(phi) + y * cos(theta) * sin(phi);
+	float y_iso = y * sin(theta);
+
+	// Rotate by 45 degrees (additional rotation step)
+	float angle = 45.0f * (3.14159265358979323846f / 180.0f);
+	float temp_x = x_iso;
+//	return (x_iso * cos(angle) - y_iso * sin(angle));
+
+	return ((dx - dy) * cos(0.523599));
+
 }
 
 int32_t conv_y(int32_t x, int32_t y, int32_t z)
 {
-    double angle = 30.0;
-    double sin_value = sin(angle);
+    //double angle = 30.0;
+    //double sin_value = sin(angle);
     double dx = (double)x;
     double dy = (double)y;
     double dz = (double)z;
+
+
+
+	// Calculate the isometric projection
+
 //    return (dy + sin_value + dz);
 
 //    return ((int32_t)((dx+2*dy+dz)/sqrt(6)));
 //    return ((int32_t )((dx + 2 * dy + dz) * sin(M_PI / 6.0)));;
 
-    return((dx * sin(M_PI /6.0) + dy * cos(M_PI/6.0 + 2) + dz * cos(M_PI/6.0 - 2)));
+//    return((dx * sin(M_PI /6.0) + dy * cos(M_PI/6.0 + 2) + dz * cos(M_PI/6.0 - 2)));
+//	return(-dz + (dx + dy) * sin(M_PI /
+
+	float theta = 45.0f * (3.14159265358979323846f / 180.0f);
+	float phi = 35.264f * (3.14159265358979323846f / 180.0f);
+
+	// Calculate the isometric projection
+	float x_iso = x * cos(phi) + y * cos(theta) * sin(phi);
+	float y_iso = y * sin(theta);
+
+	// Rotate by 45 degrees (additional rotation step)
+	float angle = 45.0f * (3.14159265358979323846f / 180.0f);
+	float temp_x = x_iso;
+	x_iso = x_iso * cos(angle) - y_iso * sin(angle);
+	y_iso = temp_x * sin(angle) + y_iso * cos(angle);
+
+
+//	return (temp_x * sin(angle) + y_iso * cos(angle));
+	return (dz + (dx + dy) * sin(0.523599));
 }
 
 void	ft_put_2d_matrix(long color, void *param)
@@ -170,8 +220,9 @@ void	ft_put_2d_matrix(long color, void *param)
 	int32_t offset = 20;
 	int32_t row_start = 0;
 	int32_t col_start = 0;
-    int32_t screen_offset = 50;
+    int32_t screen_offset = 150;
 
+	print_matrix(v->matrix, &v->row, &v->col);
 
 //	ft_put_line(row_start * offset, col_start * offset, v->row * offset, v->col * offset, color);
 
@@ -232,15 +283,15 @@ void	ft_put_2d_matrix(long color, void *param)
         prev_col_start = col_start;
 		while (col_start < v->col)
 		{
-            printf("Old [");
-			printf("Row %d Col %d ", row_start, prev_col_start);
-			printf("Z %d ", v->matrix[row_start][prev_col_start]);
-			printf("]");
-            printf(" -> ");
-            printf("New [");
-            printf("Row %d Col %d ", row_start, col_start);
-            printf("Z %d ", v->matrix[row_start][col_start]);
-            printf("]");
+//            printf("Old [");
+//			printf("Row %d Col %d ", row_start, prev_col_start);
+//			printf("Z %d ", v->matrix[row_start][prev_col_start]);
+//			printf("]");
+//            printf(" -> ");
+//            printf("New [");
+//            printf("Row %d Col %d ", row_start, col_start);
+//            printf("Z %d ", v->matrix[row_start][col_start]);
+//            printf("]");
 
             //            old_x = conv_x(col_start * offset, prev_row_start * offset, v->matrix[prev_row_start][col_start] * offset);
 //            old_y = conv_x(col_start * offset, prev_row_start * offset, v->matrix[prev_row_start][col_start] * offset);
@@ -300,15 +351,15 @@ void	ft_put_2d_matrix(long color, void *param)
         prev_row_start = row_start;
         while (row_start <= v->row)
         {
-            printf("Old [");
-			printf("R %d C %d ", prev_row_start  * offset, col_start * offset);
-			printf("Z %d ", v->matrix[prev_row_start][col_start]  * offset);
-			printf("]");
-            printf(" -> ");
-            printf("New [");
-            printf("R %d C %d ", row_start  * offset, col_start  * offset);
-            printf("Z %d ", v->matrix[row_start][col_start] * offset);
-            printf("]");
+//            printf("Old [");
+//			printf("R %d C %d ", prev_row_start  * offset, col_start * offset);
+//			printf("Z %d ", v->matrix[prev_row_start][col_start]  * offset);
+//			printf("]");
+//            printf(" -> ");
+//            printf("New [");
+//            printf("R %d C %d ", row_start  * offset, col_start  * offset);
+//            printf("Z %d ", v->matrix[row_start][col_start] * offset);
+//            printf("]");
 
 
 
@@ -323,16 +374,16 @@ void	ft_put_2d_matrix(long color, void *param)
 //            new_x = conv_x(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
 //            new_y = conv_y(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
 
-            printf("\n");
-
-            printf("Old coordinates [");
-            printf("R %d C %d ", old_x, old_y);
-            printf("]");
-            printf(" -> ");
-            printf("New coordinates [");
-            printf("R %d C %d ", new_x, new_y);
-            printf("]");
-            printf("\n");
+//            printf("\n");
+//
+//            printf("Old coordinates [");
+//            printf("R %d C %d ", old_x, old_y);
+//            printf("]");
+//            printf(" -> ");
+//            printf("New coordinates [");
+//            printf("R %d C %d ", new_x, new_y);
+//            printf("]");
+//            printf("\n");
 
             ft_put_line(old_x + screen_offset,
                         old_y + screen_offset,
@@ -462,7 +513,7 @@ int32_t	main(int32_t argc, const char *argv[])
 	v.col = 0;
 	v.buf = retrieve_buf(argv[1]);
 	v.matrix = str_to_matrix(v.buf, &v.row, &v.col);
-	//print_matrix(v.matrix, &v.row, &v.col);
+	print_matrix(v.matrix, &v.row, &v.col);
 	if (init_mlx(&mlx, &v) != EXIT_SUCCESS)
 	{
 		return (EXIT_FAILURE);
