@@ -12,8 +12,8 @@
 
 #include "fdf.h"
 
-#define WIDTH 512
-#define HEIGHT 512
+#define WIDTH 1024
+#define HEIGHT 1024
 
 static	mlx_image_t	*image;
 
@@ -211,18 +211,19 @@ int32_t conv_y(int32_t x, int32_t y, int32_t z)
 
 void	ft_put_2d_matrix(long color, void *param)
 {
-//	int32_t x = 0;
-//	int32_t y = 0;
-//	int32_t x_end = 256;
-//	int32_t y_end = 256;
+
 	t_main *v = (t_main *)param;
 //	long color = 0xFF00FFFF;
 	int32_t offset = 20;
-	int32_t row_start = 0;
-	int32_t col_start = 0;
-    int32_t screen_offset = 150;
+    int32_t z_offset = 2;
 
-	print_matrix(v->matrix, &v->row, &v->col);
+    int32_t row_start = 0;
+	int32_t col_start = 0;
+    int32_t x_screen_offset = 600;
+    int32_t y_screen_offset = 150;
+
+
+    //print_matrix(v->matrix, &v->row, &v->col);
 
 //	ft_put_line(row_start * offset, col_start * offset, v->row * offset, v->col * offset, color);
 
@@ -277,7 +278,7 @@ void	ft_put_2d_matrix(long color, void *param)
     //convert_x(prev_col_start, prev_row_start, v->matrix[prev_row_start][prev_col_start]);
 
     //draw horizontal lines only
-	while (row_start <= v->row)
+	while (row_start < v->row)
 	{
 		col_start = 0;
         prev_col_start = col_start;
@@ -303,15 +304,17 @@ void	ft_put_2d_matrix(long color, void *param)
 //                        new_y + screen_offset,
 //                        color);
 
-            old_x = conv_x(prev_col_start * offset, row_start * offset, v->matrix[row_start][prev_col_start] * offset);
-            old_y = conv_y(prev_col_start * offset, row_start * offset, v->matrix[row_start][prev_col_start] * offset);
-            new_x = conv_x(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
-            new_y = conv_y(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
 
-            ft_put_line(old_x + screen_offset,
-                        old_y + screen_offset,
-                        new_x + screen_offset,
-                        new_y + screen_offset,
+//drawing converted lines
+            old_x = conv_x(prev_col_start * offset, row_start * offset, -v->matrix[row_start][prev_col_start] * z_offset);
+            old_y = conv_y(prev_col_start * offset, row_start * offset, -v->matrix[row_start][prev_col_start] * z_offset);
+            new_x = conv_x(col_start * offset, row_start * offset, -v->matrix[row_start][col_start] * z_offset);
+            new_y = conv_y(col_start * offset, row_start * offset, -v->matrix[row_start][col_start] * z_offset);
+
+            ft_put_line(old_x + x_screen_offset,
+                        old_y + y_screen_offset,
+                        new_x + x_screen_offset,
+                        new_y + y_screen_offset,
                         color);
 
 
@@ -321,10 +324,10 @@ void	ft_put_2d_matrix(long color, void *param)
 //                        new_y + screen_offset,
 //                        color);
 
-//            ft_put_line(prev_col_start * offset,
-//                        row_start * offset,
-//                        col_start * offset,
-//                        row_start * offset,
+//            ft_put_line(prev_col_start * offset + screen_offset,
+//                        row_start * offset + screen_offset,
+//                        col_start * offset + screen_offset,
+//                        row_start * offset + screen_offset,
 //                        color);
             prev_col_start = col_start;
             col_start++;
@@ -349,7 +352,7 @@ void	ft_put_2d_matrix(long color, void *param)
     {
         row_start = 0;
         prev_row_start = row_start;
-        while (row_start <= v->row)
+        while (row_start < v->row)
         {
 //            printf("Old [");
 //			printf("R %d C %d ", prev_row_start  * offset, col_start * offset);
@@ -362,11 +365,17 @@ void	ft_put_2d_matrix(long color, void *param)
 //            printf("]");
 
 
+// drawing converted values
+            old_x = conv_x(col_start * offset, prev_row_start * offset, -v->matrix[prev_row_start][col_start] * z_offset);
+            old_y = conv_y(col_start * offset, prev_row_start * offset, -v->matrix[prev_row_start][col_start] * z_offset);
+            new_x = conv_x(col_start * offset, row_start * offset, -v->matrix[row_start][col_start] * z_offset);
+            new_y = conv_y(col_start * offset, row_start * offset, -v->matrix[row_start][col_start] * z_offset);
 
-            old_x = conv_x(col_start * offset, prev_row_start * offset, v->matrix[prev_row_start][col_start] * offset);
-            old_y = conv_y(col_start * offset, prev_row_start * offset, v->matrix[prev_row_start][col_start] * offset);
-            new_x = conv_x(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
-            new_y = conv_y(col_start * offset, row_start * offset, v->matrix[row_start][col_start] * offset);
+            ft_put_line(old_x + x_screen_offset,
+                        old_y + y_screen_offset,
+                        new_x + x_screen_offset,
+                        new_y + y_screen_offset,
+                        color);
 
 
 //            old_x = conv_x(col_start * offset, prev_row_start * offset, v->matrix[prev_row_start][col_start] * offset);
@@ -385,11 +394,7 @@ void	ft_put_2d_matrix(long color, void *param)
 //            printf("]");
 //            printf("\n");
 
-            ft_put_line(old_x + screen_offset,
-                        old_y + screen_offset,
-                        new_x + screen_offset,
-                        new_y + screen_offset,
-                        color);
+
 
 //            ft_put_line(old_x + screen_offset,
 //                        old_y + screen_offset,
@@ -442,6 +447,7 @@ void	ft_randomize(void *param)
 	long color = 0xFF00FFFF;
 	//ft_put_pixel(x, y, color);
 //	ft_put_line(x, y, x_end, y_end, color);
+
 	ft_put_2d_matrix(color, param);
 
 
@@ -482,7 +488,9 @@ int32_t	init_mlx(mlx_t **mlx, t_main *v)
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	if (!(image = mlx_new_image(*mlx, 512, 512)))
+//    if (!(image = mlx_new_image(*mlx, 512, 512)))
+
+        if (!(image = mlx_new_image(*mlx, WIDTH, HEIGHT)))
 	{
 		mlx_close_window(*mlx);
 		puts(mlx_strerror(mlx_errno));
@@ -494,9 +502,13 @@ int32_t	init_mlx(mlx_t **mlx, t_main *v)
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
+
 	mlx_loop_hook(*mlx, ft_randomize, v);
-	mlx_loop_hook(*mlx, ft_hook, *mlx);
-	return (EXIT_SUCCESS);
+
+    mlx_loop_hook(*mlx, ft_hook, *mlx);
+    printf("Randomize running now\n");
+
+    return (EXIT_SUCCESS);
 }
 
 int32_t	main(int32_t argc, const char *argv[])
@@ -512,15 +524,29 @@ int32_t	main(int32_t argc, const char *argv[])
 	v.row = 0;
 	v.col = 0;
 	v.buf = retrieve_buf(argv[1]);
-	v.matrix = str_to_matrix(v.buf, &v.row, &v.col);
-	print_matrix(v.matrix, &v.row, &v.col);
-	if (init_mlx(&mlx, &v) != EXIT_SUCCESS)
+    printf("Retrieve buf working now\n");
+
+    v.matrix = str_to_matrix(v.buf, &v.row, &v.col);
+    printf("Str to matrix working now\n");
+
+    print_matrix(v.matrix, &v.row, &v.col);
+    printf("Print matrix working now\n");
+
+    if (init_mlx(&mlx, &v) != EXIT_SUCCESS)
 	{
 		return (EXIT_FAILURE);
 	}
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
+    printf("Init MLX running now\n");
+
+    mlx_loop(mlx);
+    printf("MLX loop running now\n");
+    print_matrix(v.matrix, &v.row, &v.col);
+
+
+    mlx_terminate(mlx);
 	free_matrix(v.matrix, &v.row);
-	free(v.buf);
+    printf("Freeing matrix now\n");
+
+    free(v.buf);
 	return (EXIT_SUCCESS);
 }

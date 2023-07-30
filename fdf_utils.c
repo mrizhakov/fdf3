@@ -30,6 +30,7 @@ void	print_matrix(int **matrix, int *rw, int *cl)
 	int	j;
 
 	i = 0;
+    printf("Rows %d, cols %d\n", *rw, *cl);
 	while (i < *rw)
 	{
 		j = 0;
@@ -41,19 +42,23 @@ void	print_matrix(int **matrix, int *rw, int *cl)
 		printf("\n");
 		i++;
 	}
+
 }
 
 void	free_matrix(int **matrix, int *rw)
 {
 	int	i;
 
+    printf("Issue here\n");
 	i = 0;
-	while (i < *rw)
+	while (i <= *rw)
 	{
 		free(matrix[i]);
 		i++;
-	}
-	free(matrix);
+
+    }
+
+    free(matrix);
 }
 
 void	free_split(char **split)

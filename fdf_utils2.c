@@ -32,11 +32,13 @@ static void	matrix_loop(t_strm *v, int *cl)
 int	**str_to_matrix(char *buf, int *rw, int *cl)
 {
 	t_strm	v;
-
 	v.i = 0;
 	v.split = ft_split(buf, '\n');
+    *rw = 1;
+
 	while (buf[v.i])
 	{
+
 		if (buf[v.i] == '\n')
 			*rw = *rw + 1;
 		v.i++;
@@ -63,12 +65,12 @@ char	*retrieve_buf(const char *arg1)
 	path = ft_strjoin(path, arg1);
 	fd = open(path, O_RDONLY);
 	rd = read(fd, buf, 100000);
-	if (rd == -1)
+	if (rd == (size_t)-1)
 	{
 		write(2, "error: invalid map\n", 20);
 		exit(0);
 	}
-	buf[rd+1] = '\0';
+	buf[rd] = '\0';
 	free(path);
 	close(fd);
 	return (buf);

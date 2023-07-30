@@ -19,14 +19,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="322df18f-0320-4bb5-a035-cc719fec20b3" name="Changes" comment="ft_put_2d_matrix is working">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-Jul-23_11_25_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-Jul-23_11_25_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fdf_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/fdf_utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fdf_utils2.c" beforeDir="false" afterPath="$PROJECT_DIR$/fdf_utils2.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/42.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/42.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/small-f.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/small-f.fdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/maps/small.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/small.fdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,11 +120,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="fdf_debug" type="CLionNativeAppRunConfigurationType" nameIsGenerated="true" PROGRAM_PARAMS="&quot;small.fdf&quot;" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="fdf_colab" TARGET_NAME="fdf_debug" CONFIG_NAME="fdf_debug" version="1" RUN_PATH="$PROJECT_DIR$/a.out">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
@@ -161,6 +160,9 @@
       <workItem from="1690288502499" duration="3000" />
       <workItem from="1690289489627" duration="1000" />
       <workItem from="1690383093263" duration="4303000" />
+      <workItem from="1690460407369" duration="3299000" />
+      <workItem from="1690472524990" duration="1079000" />
+      <workItem from="1690714171334" duration="7311000" />
     </task>
     <task id="LOCAL-00001" summary="added functions to measure the size of the map and malloc it as a 2d int array">
       <created>1689347003568</created>
@@ -265,6 +267,11 @@
           <url>file://$PROJECT_DIR$/fdf_utils2.c</url>
           <line>16</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.c</url>
+          <line>517</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
