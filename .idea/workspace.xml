@@ -18,20 +18,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="322df18f-0320-4bb5-a035-cc719fec20b3" name="Changes" comment="ft_put_2d_matrix is working">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-Jul-23_11_25_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-Jul-23_11_25_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="322df18f-0320-4bb5-a035-cc719fec20b3" name="Changes" comment="Fixed counting rows. Printing most maps now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fdf_utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/fdf_utils.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fdf_utils2.c" beforeDir="false" afterPath="$PROJECT_DIR$/fdf_utils2.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/42.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/42.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/small-f.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/small-f.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/small.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/small.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/10-2.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/10-2.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/10-70.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/10-70.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/20-60.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/20-60.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/50-4.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/50-4.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/basictest.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/basictest.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/elem.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/elem.fdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/mars.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/mars.fdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       <workItem from="1690383093263" duration="4303000" />
       <workItem from="1690460407369" duration="3299000" />
       <workItem from="1690472524990" duration="1079000" />
-      <workItem from="1690714171334" duration="7311000" />
+      <workItem from="1690714171334" duration="9283000" />
     </task>
     <task id="LOCAL-00001" summary="added functions to measure the size of the map and malloc it as a 2d int array">
       <created>1689347003568</created>
@@ -202,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689948646399</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed counting rows. Printing most maps now">
+      <created>1690727260821</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690727260821</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +262,8 @@
     <MESSAGE value="Converted string to char ** to int **. Need to find memory leaks&#10;Update README" />
     <MESSAGE value="Converted string to char ** to int **. Need to find memory leaks&#10;Update README&#10;test" />
     <MESSAGE value="ft_put_2d_matrix is working" />
-    <option name="LAST_COMMIT_MESSAGE" value="ft_put_2d_matrix is working" />
+    <MESSAGE value="Fixed counting rows. Printing most maps now" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed counting rows. Printing most maps now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -270,7 +275,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>517</line>
+          <line>258</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
