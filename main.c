@@ -255,6 +255,13 @@ int32_t	init_mlx(mlx_t **mlx, t_main *v)
     return (EXIT_SUCCESS);
 }
 
+void intialize_variables(t_main *v)
+{
+	v->row = 0;
+	v->col = 0;
+	v->color = 0xFF00FFFF;
+}
+
 int32_t	main(int32_t argc, const char *argv[])
 {
 	mlx_t	*mlx;
@@ -264,13 +271,18 @@ int32_t	main(int32_t argc, const char *argv[])
 		write(2, "error: you need a valid map name\n", 33);
 		return (0);
 	}
-	v.row = 0;
-	v.col = 0;
+//	v.row = 0;
+//	v.col = 0;
+	intialize_variables(&v);
+
 	v.buf = retrieve_buf(argv[1]);
     //sprintf("Retrieve buf working now\n");
 
-    v.matrix = str_to_matrix(v.buf, &v.row, &v.col);
-    printf("Str to matrix working now\n");
+//    v.matrix = str_to_matrix(v.buf, &v.row, &v.col);
+//	v.matrix = str_to_matrix(&v);
+	str_to_matrix(&v);
+
+	printf("Str to matrix working now\n");
 
     print_matrix(v.matrix, &v.row, &v.col);
     printf("Print matrix working now\n");

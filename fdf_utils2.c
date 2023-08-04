@@ -12,13 +12,15 @@
 
 #include "fdf.h"
 
-static void	matrix_loop(t_strm *v, int *cl)
+//static void	matrix_loop(t_strm *v, int *cl)
+static void	matrix_loop(t_main *v)
+
 {
 	v->split2 = ft_split(v->split[v->i], ' ');
-	*cl = 0;
-	while (v->split2[*cl])
-		(*cl)++;
-	v->matrix[v->i] = (int *)malloc(*cl * sizeof(int));
+	v->col = 0;
+	while (v->split2[v->col])
+		v->col++;
+	v->matrix[v->i] = (int *)malloc(v->col * sizeof(int));
 	v->j = 0;
 	while (v->split2[v->j])
 	{
@@ -29,28 +31,30 @@ static void	matrix_loop(t_strm *v, int *cl)
 	v->i++;
 }
 
-int	**str_to_matrix(char *buf, int *rw, int *cl)
+//int	**str_to_matrix(char *buf, int *rw, int *cl)
+void str_to_matrix(t_main *v)
+
 {
-	t_strm	v;
-	v.i = 0;
-	v.split = ft_split(buf, '\n');
-    *rw = 1;
+	//t_strm	v;
+	v->i = 0;
+	v->split = ft_split(v->buf, '\n');
+    v->row = 1;
 
-	while (buf[v.i])
+	while (v->buf[v->i])
 	{
 
-		if (buf[v.i] == '\n')
-			*rw = *rw + 1;
-		v.i++;
+		if (v->buf[v->i] == '\n')
+			v->row = v->row + 1;
+		v->i++;
 	}
-	v.matrix = (int **)malloc((*rw) * sizeof(int *));
-	v.i = 0;
-	while (v.split[v.i])
+	v->matrix = (int **)malloc((v->row) * sizeof(int *));
+	v->i = 0;
+	while (v->split[v->i])
 	{
-		matrix_loop(&v, cl);
+		matrix_loop(v);
 	}
-	free_split(v.split);
-	return (v.matrix);
+	free_split(v->split);
+	//return (v.matrix);
 }
 
 char	*retrieve_buf(const char *arg1)

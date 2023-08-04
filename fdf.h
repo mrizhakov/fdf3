@@ -26,8 +26,14 @@ typedef struct s_main
 {
 	int32_t 		row;
 	int32_t 		col;
+	long			color;
 	char			*buf;
 	int				**matrix;
+	int		i;
+	int		j;
+	char	**split;
+	char	**split2;
+	//int		**matrix;
 }t_main;
 
 typedef struct s_data
@@ -57,7 +63,11 @@ void	free_split(char **split);
 
 //fdf_utils2.c
 
-int		**str_to_matrix(char *buf, int *rw, int *cl);
+//int		**str_to_matrix(char *buf, int *rw, int *cl);
+void str_to_matrix(t_main *v);
+
 char	*retrieve_buf(const char *arg1);
+void	intialize_variables(t_main *v);
+
 
 #endif //FDF_H
