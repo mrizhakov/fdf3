@@ -33,6 +33,24 @@ typedef struct s_main
 	int		j;
 	char	**split;
 	char	**split2;
+	int32_t offset;
+	int32_t z_offset;
+
+	int32_t row_start;
+	int32_t col_start;
+	int32_t x_screen_offset;
+	int32_t y_screen_offset;
+
+
+
+	int32_t prev_row_start;
+	int32_t prev_col_start;
+	int32_t prev_x;
+	int32_t prev_y;
+	int32_t old_x;
+	int32_t old_y;
+	int32_t new_x;
+	int32_t new_y;
 	//int		**matrix;
 }t_main;
 
@@ -67,7 +85,12 @@ void	free_split(char **split);
 void str_to_matrix(t_main *v);
 
 char	*retrieve_buf(const char *arg1);
+void intialize_variables_2(t_main *v);
 void	intialize_variables(t_main *v);
+void	draw_colums(t_main *v);
+void	draw_rows(t_main *v);
+
+
 
 
 #endif //FDF_H

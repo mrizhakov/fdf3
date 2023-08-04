@@ -18,17 +18,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="322df18f-0320-4bb5-a035-cc719fec20b3" name="Changes" comment="Fixed counting rows. Printing most maps now">
+    <list default="true" id="322df18f-0320-4bb5-a035-cc719fec20b3" name="Changes" comment="Refactoring code to have everything within one struct">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fdf.h" beforeDir="false" afterPath="$PROJECT_DIR$/fdf.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/10-2.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/10-2.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/10-70.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/10-70.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/20-60.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/20-60.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/50-4.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/50-4.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/basictest.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/basictest.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/elem.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/elem.fdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maps/mars.fdf" beforeDir="false" afterPath="$PROJECT_DIR$/maps/mars.fdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +116,11 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -206,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1690727260821</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Refactoring code to have everything within one struct">
+      <created>1691159006179</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691159006179</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,19 +269,20 @@
     <MESSAGE value="Converted string to char ** to int **. Need to find memory leaks&#10;Update README&#10;test" />
     <MESSAGE value="ft_put_2d_matrix is working" />
     <MESSAGE value="Fixed counting rows. Printing most maps now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed counting rows. Printing most maps now" />
+    <MESSAGE value="Refactoring code to have everything within one struct" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring code to have everything within one struct" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/fdf_utils2.c</url>
-          <line>16</line>
+          <line>18</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.c</url>
-          <line>258</line>
+          <line>355</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
