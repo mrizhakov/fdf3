@@ -35,14 +35,10 @@ typedef struct s_main
 	char	**split2;
 	int32_t offset;
 	int32_t z_offset;
-
 	int32_t row_start;
 	int32_t col_start;
 	int32_t x_screen_offset;
 	int32_t y_screen_offset;
-
-
-
 	int32_t prev_row_start;
 	int32_t prev_col_start;
 	int32_t prev_x;
@@ -51,7 +47,17 @@ typedef struct s_main
 	int32_t old_y;
 	int32_t new_x;
 	int32_t new_y;
-	//int		**matrix;
+    int32_t dx;
+    int32_t dy;
+    int32_t sx;
+    int32_t sy;
+    int32_t err;
+    int32_t e2;
+    mlx_t	*mlx;
+
+
+    mlx_image_t *image;
+    //int		**matrix;
 }t_main;
 
 typedef struct s_data
