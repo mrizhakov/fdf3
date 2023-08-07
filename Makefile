@@ -13,7 +13,7 @@ LIBFT			=	$(LIBFT_PATH)/libft.a
 
 
 all:name
-	cc -g3 -lm main.c fdf_utils.c fdf_utils2.c $(LIBFT) $(LIBMLX) $(GNL) $(MLXFLAGS)
+	cc -g3 -lm main.c draw.c draw2.c fdf_utils.c fdf_utils2.c fdf_utils3.c $(LIBFT) $(LIBMLX) $(GNL) $(MLXFLAGS)
 	
 name:
 	make -C $(LIBFT_PATH) all

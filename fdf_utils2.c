@@ -31,18 +31,13 @@ static void	matrix_loop(t_main *v)
 	v->i++;
 }
 
-//int	**str_to_matrix(char *buf, int *rw, int *cl)
 void str_to_matrix(t_main *v)
-
 {
-	//t_strm	v;
 	v->i = 0;
 	v->split = ft_split(v->buf, '\n');
     v->row = 1;
-
 	while (v->buf[v->i])
 	{
-
 		if (v->buf[v->i] == '\n')
 			v->row = v->row + 1;
 		v->i++;
@@ -54,7 +49,6 @@ void str_to_matrix(t_main *v)
 		matrix_loop(v);
 	}
 	free_split(v->split);
-	//return (v.matrix);
 }
 
 char	*retrieve_buf(const char *arg1)

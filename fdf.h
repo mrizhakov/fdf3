@@ -13,6 +13,7 @@
 #ifndef FDF_H
 # define FDF_H
 
+
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
@@ -21,6 +22,13 @@
 # include <math.h>
 # include "MLX42/include/MLX42/MLX42.h"
 # include "libft/libft.h"
+
+# define WIDTH 1280
+# define HEIGHT 1024
+
+
+static	mlx_image_t	*image;
+
 
 typedef struct s_main
 {
@@ -54,11 +62,8 @@ typedef struct s_main
     int32_t err;
     int32_t e2;
     mlx_t	*mlx;
-
-
     mlx_image_t *image;
-    //int		**matrix;
-}t_main;
+} t_main;
 
 typedef struct s_data
 {
@@ -78,25 +83,43 @@ typedef struct s_strm
 	int		**matrix;
 }t_strm;
 
-//fdf_utils.c
 
+//fdf_utils.c
+void	ft_randomize(void *param);
+
+int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
+void	ft_hook(void *param);
+int32_t	init_mlx(mlx_t **mlx, t_main *v);
+void	intialize_variables(t_main *v);
+void	ft_put_pixel(int32_t x, int32_t y, long color);
+void ft_put_line_loop(t_main *v);
+void ft_put_line(t_main *v);
+int32_t conv_x(int32_t x, int32_t y, int32_t z);
+int32_t conv_y(int32_t x, int32_t y, int32_t z);
+void intialize_variables_2(t_main *v);
+void	draw_colums(t_main *v);
+void	draw_rows(t_main *v);
+void	resize_grid_size(t_main *v);
+void	set_screen_offset(t_main *v);
 void	print_split(char **split);
 void	print_matrix(int **matrix, int *rw, int *cl);
 void	free_matrix(int **matrix, int *rw);
 void	free_split(char **split);
-
 //fdf_utils2.c
+static void	matrix_loop(t_main *v);
 
-//int		**str_to_matrix(char *buf, int *rw, int *cl);
+
 void str_to_matrix(t_main *v);
+void	resize_image(t_main *v);
+void	ft_put_2d_matrix(void *param);
+
+
+
 
 char	*retrieve_buf(const char *arg1);
 void intialize_variables_2(t_main *v);
 void	intialize_variables(t_main *v);
 void	draw_colums(t_main *v);
 void	draw_rows(t_main *v);
-
-
-
 
 #endif //FDF_H
