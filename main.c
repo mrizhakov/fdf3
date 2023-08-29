@@ -14,17 +14,18 @@
 
 void	ft_put_pixel(int32_t x, int32_t y, long color)
 {
-	mlx_put_pixel(image, x, y, color);
+	mlx_put_pixel(g_image, x, y, color);
 }
 
-void ft_put_line_loop(t_main *v)
+void	ft_put_line_loop(t_main *v)
 {
 	while (1)
 	{
-		if (v->old_y >= 0 && v->old_y < HEIGHT && v->old_x >= 0 && v->old_x < WIDTH)
+		if (v->old_y >= 0 && v->old_y < HEIGHT 
+			&& v->old_x >= 0 && v->old_x < WIDTH)
 			ft_put_pixel(v->old_x, v->old_y, v->color);
 		if (v->old_x == v->new_x && v->old_y == v->new_y)
-			break;
+			break ;
 		v->e2 = 2 * v->err;
 		if (v->e2 >= v->dy)
 		{
@@ -41,19 +42,19 @@ void ft_put_line_loop(t_main *v)
 
 void	ft_hook(void *param)
 {
-	t_main *v;
+	t_main	*v;
 
 	v = (t_main *) param;
 	if (mlx_is_key_down(v->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(v->mlx);
 	if (mlx_is_key_down(v->mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
+		g_image->instances[0].y -= 5;
 	if (mlx_is_key_down(v->mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
+		g_image->instances[0].y += 5;
 	if (mlx_is_key_down(v->mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
+		g_image->instances[0].x -= 5;
 	if (mlx_is_key_down(v->mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
+		g_image->instances[0].x += 5;
 }
 
 //
@@ -73,32 +74,34 @@ void	ft_hook(void *param)
 
 int32_t	init_mlx(mlx_t **mlx, t_main *v)
 {
-	if (!(*mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true)))
+	*mlx = mlx_init(WIDTH, HEIGHT, "MLX42", true);
+	if (!(*mlx))
 	{
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-	if (!(image = mlx_new_image(*mlx, WIDTH, HEIGHT)))
-	{
-		mlx_close_window(*mlx);
-		puts(mlx_strerror(mlx_errno));
-		return (EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(*mlx, image, 0, 0) == -1)
+	g_image = mlx_new_image(*mlx, WIDTH, HEIGHT);
+	if (!(g_image))
 	{
 		mlx_close_window(*mlx);
 		puts(mlx_strerror(mlx_errno));
 		return (EXIT_FAILURE);
 	}
-    mlx_loop_hook(*mlx, ft_randomize, v);
-    mlx_loop_hook(*mlx, ft_hook, v);
-    return (EXIT_SUCCESS);
+	if (mlx_image_to_window(*mlx, g_image, 0, 0) == -1)
+	{
+		mlx_close_window(*mlx);
+		puts(mlx_strerror(mlx_errno));
+		return (EXIT_FAILURE);
+	}
+	mlx_loop_hook(*mlx, ft_randomize, v);
+	mlx_loop_hook(*mlx, ft_hook, v);
+	return (EXIT_SUCCESS);
 }
 
 int32_t	main(int32_t argc, const char *argv[])
 {
-	//mlx_t	*mlx;
 	t_main	v;
+
 	if (argc != 2)
 	{
 		write(2, "error: you need a valid map name\n", 33);
@@ -113,7 +116,7 @@ int32_t	main(int32_t argc, const char *argv[])
 	}
 	mlx_loop(v.mlx);
 	mlx_terminate(v.mlx);
-	free_matrix(v.matrix, &v.row);
+	free_matrix(v.mat, &v.rw);
 	free(v.buf);
 	return (EXIT_SUCCESS);
 }

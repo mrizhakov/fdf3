@@ -3,20 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 18:40:56 by lbaron            #+#    #+#             */
-/*   Updated: 2022/11/29 18:40:59 by lbaron           ###   ########.fr       */
+/*   Created: 2022/10/18 13:59:24 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/01/07 18:21:56 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<unistd.h>
+#include<stdio.h>
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	while (*str != '\0' && *str != (unsigned char)c)
-		str++;
-	if (*str == (unsigned char)c)
-		return ((char *)str);
+	while ((*s != '\0') && (*s != (char)c))
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return ((char *) NULL);
+}
+
+/*
+int	main(void)
+{
+	int c;
+	
+	
+	char s[] = "tripouille";
+	c = '\0';
+	printf("found %s ", ft_strchr(s, 't' + 256));
+	
+	
 	return (0);
 }
+*/

@@ -3,24 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:23:10 by lbaron            #+#    #+#             */
-/*   Updated: 2022/11/29 17:23:11 by lbaron           ###   ########.fr       */
+/*   Created: 2022/12/02 19:56:29 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/01/07 21:16:52 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
+#include <stdio.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	char	*new;
+	int		i;
+	int		n_int;
 
 	i = 0;
-	while (i < n)
+	n_int = (int)n;
+	new = (char *)s;
+	while (i != n_int)
 	{
-		((unsigned char *)s)[i] = c;
+		new[i] = c;
 		i++;
 	}
-	return (s);
+	return ((void *)s);
 }
+
+/*
+int	main(void)
+{
+	void *s;
+	int c;
+	size_t n;
+	char str[] = "Hello";
+	char *result;
+
+	n = 5;	
+	c = 'c';
+	s =  str;
+	
+	result = ft_memset(s, c, n);
+	printf("%p", result);
+	return (0);
+}
+*/

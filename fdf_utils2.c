@@ -13,36 +13,36 @@
 #include "fdf.h"
 
 //static void	matrix_loop(t_strm *v, int *cl)
-static void	matrix_loop(t_main *v)
+void	matrix_loop(t_main *v)
 
 {
 	v->split2 = ft_split(v->split[v->i], ' ');
-	v->col = 0;
-	while (v->split2[v->col])
-		v->col++;
-	v->matrix[v->i] = (int *)malloc(v->col * sizeof(int));
+	v->cl = 0;
+	while (v->split2[v->cl])
+		v->cl++;
+	v->mat[v->i] = (int *)malloc(v->cl * sizeof(int));
 	v->j = 0;
 	while (v->split2[v->j])
 	{
-		v->matrix[v->i][v->j] = ft_atoi(v->split2[v->j]);
+		v->mat[v->i][v->j] = ft_atoi(v->split2[v->j]);
 		v->j++;
 	}
 	free_split(v->split2);
 	v->i++;
 }
 
-void str_to_matrix(t_main *v)
+void	str_to_matrix(t_main *v)
 {
 	v->i = 0;
 	v->split = ft_split(v->buf, '\n');
-    v->row = 1;
+	v->rw = 0;
 	while (v->buf[v->i])
 	{
 		if (v->buf[v->i] == '\n')
-			v->row = v->row + 1;
+			v->rw = v->rw + 1;
 		v->i++;
 	}
-	v->matrix = (int **)malloc((v->row) * sizeof(int *));
+	v->mat = (int **)malloc((v->rw) * sizeof(int *));
 	v->i = 0;
 	while (v->split[v->i])
 	{
@@ -58,11 +58,11 @@ char	*retrieve_buf(const char *arg1)
 	char	*buf;
 	char	*path;
 
-	buf = (char *)malloc(100000);
+	buf = (char *)malloc(10000000);
 	path = "./maps/";
 	path = ft_strjoin(path, arg1);
 	fd = open(path, O_RDONLY);
-	rd = read(fd, buf, 100000);
+	rd = read(fd, buf, 10000000);
 	if (rd == (size_t)-1)
 	{
 		write(2, "error: invalid map\n", 20);

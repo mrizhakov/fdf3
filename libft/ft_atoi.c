@@ -3,37 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:27:38 by lbaron            #+#    #+#             */
-/*   Updated: 2022/11/29 17:27:39 by lbaron           ###   ########.fr       */
+/*   Created: 2022/10/24 19:25:34 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/01/07 21:46:46 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sig;
-	int	ret;
+	unsigned int	str_c;
+	int				result;
+	int				positive;
 
-	i = 0;
-	sig = 1;
-	ret = 0;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' \
-		|| str[i] == '\v' || str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	str_c = 0;
+	positive = 1;
+	result = 0;
+	while (str[str_c] == 32 || (str[str_c] >= 9
+			&& str[str_c] <= 13))
+		str_c++;
+	if (str[str_c] == 45)
 	{
-		if (str[i] == '-')
-			sig *= -1;
-		i++;
+		positive = -1;
+		str_c++;
 	}
-	while (ft_isdigit(str[i]))
+	else if (str[str_c] == 43)
+		str_c++;
+	while (str[str_c] >= 48 && str[str_c] <= 57)
 	{
-		ret = ret * 10 + (str[i] - '0');
-		i++;
+		result = result * 10 + str[str_c] - '0';
+		str++;
 	}
-	return (ret * sig);
+	return (result * positive);
 }
+/*
+int main(void)
+{
+	char string1[50] = "-4886";
+
+	printf("%d", ft_atoi(string1));
+	return (0);
+}
+*/

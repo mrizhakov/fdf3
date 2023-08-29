@@ -3,41 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 12:06:04 by lbaron            #+#    #+#             */
-/*   Updated: 2022/12/06 12:06:04 by lbaron           ###   ########.fr       */
+/*   Created: 2022/12/02 19:56:29 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/01/07 21:40:18 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
+#include"libft.h"
 
-static char	*ft_setlong(char *s, int is_neg, int is_pos, long long n)
+#include<stdio.h>
+#include<stdlib.h>
+#include <fcntl.h>
+#include <limits.h>
+
+/*
+void	ft_putchar_fd(char c, int fd)
 {
-	if (n < 0)
-	{
-		is_neg = 1;
-		n = -n;
-	}
-	while (n)
-	{
-		*s = '0' + n % 10;
-		n /= 10;
-		--s;
-	}
-	if (is_neg)
-		*s = '-';
-	else if (is_pos)
-		++s;
-	return (s);
+	write(fd, &c, 1);
 }
+
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+}
+*/
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	s[21];
-
-	s[20] = 0;
-	s[19] = '0';
-	ft_putstr_fd(ft_setlong(&s[19], n < 0, n > 0, n), fd);
+	if (n == INT_MIN)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}	
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	if (n < 10)
+		ft_putchar_fd(n + '0', fd);
 }
+/*
+
+int main(void)
+{
+    int n;
+	int		fd;
+	char 	*file_name;
+
+	n = -2147483648;
+	file_name = "text.txt";
+
+	fd = open(file_name, O_RDWR);
+	//str = "hello there";
+	ft_putnbr_fd(n, fd);
+    return (0);
+}
+*/

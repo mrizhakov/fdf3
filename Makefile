@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/08 18:02:05 by mrizakov          #+#    #+#              #
+#    Updated: 2023/08/08 18:02:05 by mrizakov         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 
 
@@ -5,19 +16,23 @@ LIBMLX = MLX42/build/libmlx42.a
 MLXFLAGS = -L/path/to/glfw/library -lglfw -lm
 CFLAGS = -Wall -Werror -Wextra -g3
 
-GNL_DIR = ./get_next_line/
-GNL = $(GNL_DIR)gnl.a
-
 LIBFT_PATH		=	./libft
 LIBFT			=	$(LIBFT_PATH)/libft.a
 
+SRC= main.c fdf_utils.c fdf_utils2.c fdf_utils3.c draw.c draw2.c
 
 all:name
-	cc -g3 -lm main.c draw.c draw2.c fdf_utils.c fdf_utils2.c fdf_utils3.c $(LIBFT) $(LIBMLX) $(GNL) $(MLXFLAGS)
+	cc $(CFLAGS) $(SRC) $(LIBFT) $(LIBMLX) $(MLXFLAGS) -o fdf
 	
 name:
 	make -C $(LIBFT_PATH) all
 	
 clean:
 	make -C $(LIBFT_PATH) fclean
-	rm a.out
+
+fclean:clean
+	@rm fdf
+
+re: fclean all
+
+

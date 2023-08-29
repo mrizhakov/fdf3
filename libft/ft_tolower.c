@@ -3,16 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:25:07 by lbaron            #+#    #+#             */
-/*   Updated: 2022/11/29 17:25:08 by lbaron           ###   ########.fr       */
+/*   Created: 2022/12/02 19:56:29 by mrizakov          #+#    #+#             */
+/*   Updated: 2022/12/04 19:56:40 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+	if (c >= 65 && c <= 90)
+	{
+		c = c + 32;
+		return (c);
+	}
+	else
+	{
+		return (c);
+	}
+	return (0);
 }
+/*
+int	main(void)
+{
+	int c = 'a';
+
+	printf("%d", ft_toupper(c));
+	return (0);
+}
+*/

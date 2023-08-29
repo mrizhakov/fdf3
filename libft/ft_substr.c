@@ -3,35 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbaron <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mrizakov <mrizakov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 12:02:48 by lbaron            #+#    #+#             */
-/*   Updated: 2022/12/06 12:02:51 by lbaron           ###   ########.fr       */
+/*   Created: 2022/12/02 19:56:29 by mrizakov          #+#    #+#             */
+/*   Updated: 2023/01/07 21:39:06 by mrizakov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include"libft.h"
+
+#include<stdio.h>
+#include<stdlib.h>
+
+/*
+size_t ft_strlen(const char *str)
+{
+    size_t    counter;
+
+    counter = 0;
+    while (str[counter] != '\0')
+    {
+        counter++;
+    }
+    return (counter);
+}
+*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*ret;
-	size_t	actual;
+	char			*substr;
+	unsigned int	i;
+	unsigned int	str_len;
+	unsigned int	correct_size;
 
-	ret = 0;
-	if (s)
+	i = 0;
+	str_len = ft_strlen((char *)s);
+	correct_size = 1;
+	if (start > str_len || len == 0)
+		correct_size = 1;
+	else if (len <= str_len - start)
+		correct_size = len + 1;
+	else if (len > str_len - start)
+		correct_size = str_len - start + 1;
+	substr = malloc(correct_size * sizeof(char));
+	if (!substr)
+		return ((void *) NULL);
+	while (i != correct_size - 1)
 	{
-		actual = ft_strlen(s);
-		if (start >= actual)
-			return (ft_strdup(""));
-		actual -= start;
-		if (len < actual)
-			actual = len;
-		ret = malloc(actual + 1);
-		if (!ret)
-			return (ret);
-		ret[0] = 0;
-		ft_strlcpy(ret, &s[start], actual + 1);
+		substr[i] = s[start + i];
+		i++;
 	}
-	return (ret);
+	substr[i] = '\0';
+	return (substr);
 }
+
+/*
+int main(void)
+{
+    char    str[] = "tripouille";
+    printf("%s", ft_substr(str, 400, 20));
+    
+    return (0);
+}
+*/
